@@ -1,6 +1,6 @@
 services:
   postgres:
-    image: ghcr.io/jgsnapp/postgres:16-alpine
+    image: jgsnapp/postgres:16-alpine
     container_name: postgres
     restart: unless-stopped
     env_file:
@@ -23,11 +23,10 @@ services:
       retries: 10
 
   vllm:
-    image: ghcr.io/ggml-org/llama.cpp:server
+    image: jgsnapp/llama.cpp:server
     container_name: vllm
     restart: unless-stopped
     volumes:
-      # Модели лежат тут: hf-cache/llama.cpp
       - ./hf-cache/llama.cpp:/models:ro
     command:
       - --model
@@ -49,9 +48,8 @@ services:
       - --offline
     ports:
       - "${LLAMA_HOST_PORT:-18001}:8001"
-
   agent_server:
-    image: ghcr.io/jgsnapp/sql-hr-agent-server:latest
+    image: jgsnapp/sql-hr-agent-server:latest
     container_name: agent_server
     restart: unless-stopped
     env_file:
@@ -65,7 +63,7 @@ services:
       - ${RESULTS_DIR:-./results}:/results
 
   frontend:
-    image: ghcr.io/jgsnapp/sql-hr-frontend:latest
+    image: jgsnapp/sql-hr-frontend:latest
     container_name: frontend
     restart: unless-stopped
     env_file:
@@ -75,4 +73,3 @@ services:
         condition: service_started
     ports:
       - "8501:8501"
-
