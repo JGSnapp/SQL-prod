@@ -3,3 +3,4 @@ data/candidates_bad_rows.txt
 data/candidates_clean.csv
 db/postgres/
 results/
+data/candidates.csv
