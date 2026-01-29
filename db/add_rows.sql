@@ -112,11 +112,11 @@ CREATE TABLE candidates_raw (
 );
 
 COPY candidates_raw
-FROM '/data/candidates.csv'
+FROM '/data/candidates_clean.csv'
 WITH (
     FORMAT csv,
     HEADER true,
-    DELIMITER ',',
+    DELIMITER ';',
     ENCODING 'UTF8',
     NULL ''
 );
