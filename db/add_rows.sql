@@ -1,3 +1,5 @@
+SET datestyle = 'ISO, DMY';
+
 DROP TABLE IF EXISTS candidates_raw;
 
 CREATE TABLE candidates_raw (
